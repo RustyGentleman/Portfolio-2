@@ -1,0 +1,645 @@
+//# Imports and stuff
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap")
+@font-face
+	font-family: 'Segoe UI Symbol'
+	src: url(assets/seguisym.ttf)
+
+//# Variables
+$grid-size: 15rem
+$grid-gap: 1rem
+$bp-5col: $grid-size*5 + $grid-gap*6 + .1rem
+$bp-4col: $grid-size*4 + $grid-gap*5 + .1rem
+$bp-3col: $grid-size*3 + $grid-gap*4 + .1rem
+$bp-2col: $grid-size*2 + $grid-gap*3 + .1rem
+$c-main: hsl(216deg 100% 50%)
+$c-main-d: hsl(216deg 100% 40%)
+$c-main-l: hsl(216deg 100% 60%)
+$c-secn: hsl(189deg 100% 50%)
+
+//# Mixins and animations
+@mixin pseudo-full()
+		content: ''
+		position: absolute
+		height: 100%
+		width: 100%
+		border-radius: $grid-gap
+@keyframes oldpages-reach-bob
+	0%
+		background-position-y: 1rem
+	100%
+		background-position-y: 3rem
+@keyframes bob
+	0%
+		transform: translateY(-.5rem)
+	50%
+		transform: translateY(.5rem)
+	100%
+		transform: translateY(-.5rem)
+@keyframes spin
+	0%
+		transform: rotate(0deg)
+	100%
+		transform: rotate(360deg)
+@keyframes blink
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+@keyframes incantation
+	from
+		transform: scale(1)
+	to
+		transform: scale(.9)
+@keyframes oldpages
+	0%, 40%, 70%, 100%
+		transform: rotate(0deg)
+	50%, 60%
+		transform: rotate(-20deg)
+
+//# ----------
+//# Structural
+//# ----------
+
+:root
+	scroll-behavior: smooth
+	background-color: #111
+	overflow-x: hidden
+
+@media screen and (max-width: $bp-3col)
+	:root
+		--max-col: 2
+@media screen and (min-width: $bp-3col)
+	:root
+		--max-col: 3
+@media screen and (min-width: $bp-4col)
+	:root
+		--max-col: 4
+@media screen and (min-width: $bp-5col)
+	:root
+		--max-col: 5
+
+body
+	min-height: 100vh
+	margin: 0
+	display: flex
+	place-content: center
+	place-items: center
+	padding: $grid-gap
+	font-family: 'Oxanium'
+	overflow-x: hidden
+@media screen and (max-width: $bp-2col)
+	body
+		place-content: normal 
+		overflow-x: scroll 
+
+*
+	box-sizing: border-box
+	// border: solid 1px
+
+.grid
+	display: grid
+	grid-template-columns: repeat(auto-fit, $grid-size)
+	grid-auto-flow: dense
+	gap: $grid-gap
+	&.grid-fixed
+		grid-auto-rows: $grid-size
+	>.grid-item
+		min-height: $grid-size
+	.short
+		min-height: 0
+		height: $grid-size/4
+	.full-line
+		grid-column: 1 / -1
+@media screen and (max-width: $bp-2col)
+	:root
+		font-size: 3vw
+	// .grid
+	// 	grid-template-columns: repeat(auto-fit, calc(50vw - $grid-gap*2))
+
+header
+	display: grid
+	grid-template-columns: $grid-size+1rem minmax(auto, $grid-size*3+1rem)
+	justify-content: center
+	gap: $grid-gap
+
+@media screen and (max-width: $bp-3col)
+	header
+		grid-template-columns: 1fr 1fr 1fr
+		#icon-wrapper
+			grid-area: 1 / 1 / 1 / 3
+			margin-left: -5rem
+		#info-container
+			grid-area: 1 / 2 / 1 / 4
+
+//# ---------------
+//# General styling
+//# ---------------
+
+.grid.placeholder-bg
+	background-image: url(assets/grid-bg.png)
+	background-position: top left
+	background-size: $grid-size+$grid-gap $grid-size+$grid-gap
+
+.sym
+	font-family: 'Segoe UI Symbol'
+
+.icon
+	font-size: 5rem
+	font-weight: normal
+	line-height: 1em
+img.icon
+	width: 1em
+	height: auto
+
+.flex
+	display: flex
+	&.flex-center
+		place-content: center
+		place-items: center
+	&.row
+		flex-direction: row !important
+	&.col
+		flex-direction: column !important
+
+.header
+	font-size: 1.5rem
+	font-weight: bold
+	text-align: center
+	cursor: pointer
+
+.decorated
+	&::before,
+	&::after
+		font-family: 'Segoe UI Symbol'
+		transition: translate 300ms ease, letter-spacing 300ms ease, margin 300ms ease
+		letter-spacing: -1.6ch
+		margin-right: 1.6ch
+	&::before
+		content: '▶▶▶'
+		margin-right: 1.6ch + 1ch
+	&::after
+		content: '◀◀◀'
+		margin-left: 1ch
+	&:hover
+		&::before,
+		&::after
+			letter-spacing: 1ch
+		&::before
+			margin-right: 1ch
+			margin-left: 1.6ch
+			translate: -1em 0
+		&::after
+			translate: 1em 0
+
+.fa
+	font-family: "Font Awesome 6 Free"
+	font-weight: 900
+
+.center
+	text-align: center
+
+*,
+body //- Scrollbars
+	scrollbar-width: auto
+	scrollbar-color: $c-main white
+	//- Webkit
+	&::-webkit-scrollbar
+		width: .7rem
+		height: .7rem
+		background-color: rgb(0 0 0 / 19%)
+	&::-webkit-scrollbar-thumb
+		min-height: 3rem
+		min-width: 3rem
+		background-color: $c-main
+		box-shadow: none
+		border-radius: 0
+		border: 1px solid $c-main-d
+	&::-webkit-scrollbar-corner
+		background-color: $c-main-d
+	&::-webkit-scrollbar-track-piece
+		box-shadow: inset 0 0 0 1px rgb(0 0 0 / 19%)
+
+span
+	&.center
+		display: inline-block
+		width: 100%
+		text-align: center
+	&.indent
+		margin-left: 1em
+
+a
+	display: inline
+	color: inherit
+	// text-decoration: none
+	position: relative
+	background-image: linear-gradient(to right, white 0%, white 100%)
+	background-repeat: no-repeat
+	background-position: left bottom
+	background-size: 0% .15rem
+	// text-shadow: none
+	text-decoration: underline
+	transition: background-size 300ms ease
+
+	&:hover
+		background-size: 100% .15rem
+		&::after
+			width: 1.8ch
+			opacity: 1
+
+	&::after
+		content: "\00a0#"
+		display: inline-flex
+		place-content: center
+		width: 0
+		opacity: 0
+		transition: width 300ms ease, opacity 300ms ease
+
+	&[target="_blank"]::after
+		content: "\00a0\f08e" !important
+		font-family: "Font Awesome 6 Free"
+		font-weight: 900
+	i
+		background: none
+
+//# ----------
+//# Individual
+//# ----------
+
+@media (hover: none)
+	header #info-container #name
+		&::before,
+		&::after
+			opacity: 1 !important
+		&::before
+			width: 1.7ch !important
+		&::after
+			width: 5.5ch !important
+
+#content-wrapper
+	max-width: min(calc(100vw - $grid-gap*2), $grid-size*5 + $grid-gap*4)
+	height: fit-content
+	margin-top: 5rem
+	overflow-x: visible
+
+	.grid-item
+		background-color: $c-main
+		color: white
+		// text-shadow: 0 0 .4rem $c-main, 0 0 .4rem $c-main, 0 0 .4rem $c-main
+		border-radius: $grid-gap
+		transition: box-shadow 300ms ease
+
+	.grid.fixed
+		grid-auto-rows: $grid-size
+
+header
+	#icon-wrapper
+		position: relative
+		margin-top: -11rem
+		margin-left: -6.45
+		&, #icon
+			width: 27.95rem
+			height: 26rem
+		small
+			position: absolute
+			bottom: 0
+			left: 50%
+			transform: translateX(-50%)
+			font-size: .7rem
+			text-shadow: 0 0 .4rem $c-main, 0 0 .4rem $c-main, 0 0 .4rem $c-main
+
+	#info-container
+		text-align: center
+		text-shadow: 0 0 .4rem $c-main, 0 0 .4rem $c-main, 0 0 .4rem $c-main
+		z-index: 1
+
+		#name
+			margin: 0
+			font-size: 2rem
+			&::before,
+			&::after
+				display: inline-block
+				opacity: 0
+				width: 0
+				color: rgb(0, 217, 255)
+				transition: width 300ms ease, opacity 300ms ease
+				display: inline-flex
+				place-content: center
+			&::before
+				content: '@'
+			&::after
+				content: '#6418'
+
+		#title
+			margin-bottom: 0
+
+	&:hover #info-container #name
+		&::before,
+		&::after
+			opacity: 1
+		&::before
+			transition-delay: 150ms
+			width: 1.5ch
+		&::after
+			width: 5.5ch
+
+		#title
+			font-size: 1.2rem
+			margin: 0
+
+.card
+	padding: $grid-gap
+	display: flex
+	place-content: center
+	place-items: center
+	position: relative
+
+	//- Side-switching
+	.front
+		visibility: visible
+		transition: opacity 300ms ease
+	.back
+		visibility: hidden
+		opacity: 0
+		height: 0
+		width: 0
+		padding: 0
+		margin: 0
+		transition: none
+	&.large
+		.front
+			visibility: hidden
+			opacity: 0
+			height: 0
+			width: 0
+			padding: 0
+			margin: 0
+			transition: none
+		.back
+			visibility: visible
+			opacity: 1
+			height: initial
+			width: initial
+			transition: opacity 300ms ease 200ms
+
+	//- Other
+	&.large
+		--cspan: 2
+		--rspan: 1
+		grid-column: span min(var(--max-col), var(--cspan))
+		grid-row: span var(--rspan)
+
+	.front
+		display: flex
+		flex-direction: column
+		place-content: center
+		place-items: center
+		.icon
+			margin-bottom: 1rem
+
+	.back
+		text-shadow: 0 0 1rem black
+		[class^='devicon-']
+			font-size: 2rem
+
+	.card-inner
+		z-index: 1
+	&::before
+		content: ''
+		position: absolute
+		height: 100%
+		width: 100%
+		transition: opacity 300ms ease
+		opacity: 0
+		border-radius: $grid-gap
+		box-sizing: border-box
+		z-index: 1
+		// background-image: radial-gradient($c-secn, transparent)
+		background-color: black
+	&:hover::before
+		transition: opacity 300ms ease
+		opacity: .1
+	
+	small
+		position: absolute
+		left: 1rem
+		bottom: 1rem
+		font-style: italic
+		font-size: .7em
+
+.devicon-unity-original
+	font-size: 1.3rem !important
+	&::before
+		display: inline-block
+		// translate: -0.08rem 0
+		transform: translateX(-0.08rem)
+
+//# Cards
+
+.card#programming [class^='devicon-']
+	font-size: 2.3rem
+
+.card#ras-silverleaf
+	transition: background-color 300ms ease 300ms
+
+	[alt='Foxfire']
+		width: auto
+		height: 2em
+		margin-top: -.7em
+		margin-bottom: calc(1rem - .1em)
+		filter: grayscale(1) brightness(0.35) invert(1) contrast(2) drop-shadow(0 0 .3rem $c-main)
+
+	&::after
+		@include pseudo-full()
+		filter: contrast(0.9) brightness(0.9)
+		background-image: url(assets/ras-bg.png)
+		background-repeat: no-repeat
+		background-size: cover
+		background-position: center
+		opacity: 0
+
+	&.large
+		transition: background-color 300ms ease
+		background-color: rgb(58, 119, 62)
+		&::after
+			transition: opacity 300ms ease 300ms
+			opacity: 1
+
+.card#oldpages
+	transition: background-color 300ms ease 300ms
+
+	.front .icon
+		display: block
+		animation: oldpages 3s cubic-bezier(0.7, -1.5, 0.3, 2.5) infinite
+		transform-origin: center
+
+	.back
+		padding-left: 7rem
+		text-shadow: -.1rem -.1rem .2rem magenta, .1rem .1rem .2rem cyan
+
+	&::after
+		@include pseudo-full()
+		background-image: url(assets/oldpages-reach.png)
+		background-position-x: 1rem
+		background-position-y: 1rem
+		background-repeat: no-repeat
+		background-size: auto 120%
+		box-shadow: -.2rem -.2rem .5rem magenta, .2rem .2rem .5rem cyan
+		animation: oldpages-reach-bob 5s ease-in-out infinite alternate
+		animation-play-state: paused
+		opacity: 0
+
+	&.large
+		transition: background-color 300ms ease
+		background-color: rgb(30, 30, 30)
+		&::after
+			transition: opacity 300ms ease 300ms
+			animation-play-state: running
+			opacity: 1
+
+.card#titris
+	transition: background-color 300ms ease 300ms
+
+	.icon
+		// line-height: 0.75em
+		// letter-spacing: -0.1em
+		// font-size: 2.1em
+		width: 1em
+		margin-top: -.166em
+		margin-bottom: -.166em
+		animation: bob 6s ease-in-out infinite
+		image-rendering: pixelated
+
+	&::after
+		@include pseudo-full()
+		height: calc(100% - 4px)
+		width: calc(100% - 4px)
+		border-radius: calc($grid-gap - 4px)
+		opacity: 0
+		background-image: url(assets/titris-img.png)
+		background-position: center center
+		background-repeat: no-repeat
+		background-size: 170% auto
+		box-sizing: border-box
+		outline: solid 2px #0090ff
+		border: solid 2px #00ff95
+
+	&.large
+		background-color: rgb(30, 30, 30)
+		transition: background-color 300ms ease
+		outline: solid 2px #ff006a
+		border: solid 2px #9000ff
+
+		&::after
+			transition: opacity 300ms ease
+			opacity: 1
+
+.card#innerspace
+	transition: background-color 300ms ease 300ms
+
+	&::after
+		@include pseudo-full()
+		opacity: 0
+		background-image: url(assets/innerspace-bg.png)
+		background-position: center center
+		background-repeat: no-repeat
+		background-size: calc(100% - $grid-gap) calc(100% - $grid-gap)
+		filter: brightness(.8)
+
+	&.large
+		background-color: rgb(20, 20, 20)
+		transition: background-color 300ms ease
+		border: solid .2rem rgb(50, 50, 50)
+
+		&::after
+			transition: opacity 300ms ease
+			opacity: 1
+
+.card#husk
+	transition: background-color 300ms ease 300ms
+
+	&::after
+		@include pseudo-full()
+		opacity: 0
+		background-image: url(assets/husk-icon.png)
+		background-position: top left
+		background-repeat: no-repeat
+		background-size: auto 150%
+
+	&.large
+		background-color: rgb(40 40 40)
+		transition: background-color 300ms ease
+
+		&::after
+			transition: opacity 300ms ease
+			opacity: 1
+
+.card#incantation
+	transition: background-color 300ms ease 300ms
+
+	.icon
+		animation: spin 20s linear infinite
+
+	&::after
+		@include pseudo-full()
+		opacity: 0
+		background-image: url(assets/incantation-dither.png)
+		background-repeat: repeat
+		background-size: 64px 64px
+		mix-blend-mode: overlay
+		image-rendering: pixelated
+
+	&.large
+		background-color: rgb(10, 10, 10)
+		background-image: url(assets/incantation-bg-2.gif)
+		background-position: center 45%
+		background-repeat: no-repeat
+		background-size: auto 50
+		transition: background-color 300ms ease
+
+		&::after
+			transition: opacity 300ms ease
+			opacity: 1
+
+		&::before
+			background: none
+			box-shadow: 0 0 2rem 0 red//, inset 0 0 6px 10rem red
+			// animation: blink 1s ease infinite alternate
+			animation: incantation 1s ease-in infinite alternate
+			z-index: -1
+			opacity: 1
+			transition-delay: 300ms
+
+.card#jamusesshon
+	transition: background-color 300ms ease 300ms
+
+	&::after
+		@include pseudo-full()
+		opacity: 0
+
+	&.large
+		background-color: #0864ff
+		transition: background-color 300ms ease
+
+		&::after
+			transition: opacity 300ms ease
+			opacity: 1
+
+.card#idk
+	transition: background-color 300ms ease 300ms
+
+	&::after
+		@include pseudo-full()
+		opacity: 0
+		background-image: url(assets/titris-img.png)
+		background-position: center center
+		background-repeat: no-repeat
+		background-size: 170% auto
+
+	&.large
+		background-color: rgb(30 30 30)
+		transition: background-color 300ms ease
+
+		&::after
+			transition: opacity 300ms ease
+			opacity: 1
+

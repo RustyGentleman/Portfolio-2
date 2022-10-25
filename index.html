@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio 2</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://unpkg.com/animate-css-grid@latest"></script>
+	<script src="https://kit.fontawesome.com/9b44dae938.js" crossorigin="anonymous"></script>
+	<script defer src="app.js"></script>
+	<link rel="stylesheet" href="app.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+</head>
+<body>
+	<div id="content-wrapper" class="grid">
+		<header class="grid-item full-line">
+			<div id="icon-wrapper">
+				<img id="icon" src="assets/profile.png">
+				<small>Art piece by Cubialpha</small>
+			</div>
+			<div id="info-container" class="flex flex-center col">
+				<h1 id="name">Rasutei</h1>
+				<h2 id="title">Programmer, design enthusiast, logician, epistemophile, lover of music and fantasy</h2>
+			</div>
+		</header>
+		<div id="experience" class="grid-item short full-line flex flex-center header">
+			<span class="decorated" title="Expand all">Experience</span>
+		</div>
+		<div class="grid grid-fixed full-line placeholder-bg">
+			<div class="grid-item card" style="--cspan: 2; --rspan: 1">
+				<div class="card-inner">
+					<div class="front header flex col">
+						<span class="sym icon">🌐</span>
+						<span>Web</span>
+					</div>
+					<div class="back flex col">
+						<span>— Writing userstyles in CSS since circa 2013: 
+							<a href="https://userstyles.world/user/rustygentleman" target="_blank">published</a>
+						</span>
+						<span>— Writing userscripts in JS since circa 2013: 
+							<a href="https://greasyfork.org/en/users/911280-rustygentleman" target="_blank">published</a>
+						</span>
+						<span>— Developing webpages since circa 2015: see <a href="#projects">Projects</a></span>
+					</div>
+				</div>
+			</div>
+			<div class="grid-item card" id="programming" style="--cspan: 2; --rspan: 1">
+				<div class="card-inner">
+					<div class="front header">
+						<i class="icon fa fa-solid fa-code"></i>
+						<span>Programming</span>
+					</div>
+					<div class="back center flex col">
+						<span class="center" style="column-count: 4; column-rule: 1px solid white;margin-bottom: 1em;">
+							<span><i class="devicon-java-plain-wordmark"></i></i></span><br>
+							<span><i class="devicon-python-plain-wordmark"></i></span><br>
+							<span><i class="devicon-c-plain"></i></span><br>
+							<span><i class="devicon-csharp-plain"></i><span style="display: inline-flex;width: 0;">(<i class="devicon-unity-original"></i>)</span></span><br>
+							<span><i class="devicon-javascript-plain"></i> + <i class="devicon-jquery-plain-wordmark"></i></span><br>
+							<span><i class="devicon-css3-plain-wordmark"></i> + <i class="devicon-sass-original"></i></span><br>
+							<span><i class="devicon-html5-plain-wordmark"></i></span><br>
+						</span>
+						<div class="flex col" style="text-align: left">
+							<span>— 3-day Workshop in fullstack web development with React and PHP + Laravel</span>
+							<span>— Technical Course in Information Technology</span>
+							<span>— Studying towards bachelor's in Computer Science since 2018</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="projects" class="grid-item short full-line flex flex-center header">
+			<span class="decorated" title="Expand all">Projects</span>
+		</div>
+		<div class="grid grid-fixed full-line placeholder-bg">
+			<div class="grid-item card" id="oldpages" style="--cspan: 2; --rspan: 1">
+				<div class="card-inner">
+					<div class="front header flex col">
+						<img class="icon" src="assets/oldpages-icon.png" alt="Keyhole">
+						<!-- <span class="sym icon" style="transform: rotate(-45deg)">⃠</span> -->
+						<span>Old Diary Pages</span>
+					</div>
+					<div class="back flex col center">
+						<span style="margin-bottom: 1em;">Pages hosted in Tumblr, used then as a way to share personal information with professionals, and as early playgrounds for webdesign.</span>
+						<span style="margin-left: 3rem; margin-bottom: 2em;">These are sample pages for display, and contain no such personal information.</span>
+						<span style="margin-left: 3rem;"><a href="https://koinoskepsi.tumblr.com/sample" target="_blank">Deuteronöos Index</a></span>
+						<span style="margin-left: 3rem;"><a href="https://koinoskepsi.tumblr.com/index/future" target="_blank">[discontinued before use]</a></span>
+						<small>* Robotic hand art not original.</small>
+					</div>
+				</div>
+			</div>
+			<div class="grid-item card" id="ras-silverleaf" style="--cspan: 2; --rspan: 2">
+				<div class="card-inner">
+					<div class="front header flex col">
+						<img class="icon" src="assets/ras-icon.gif" alt="Foxfire">
+						<span>Ras Silverleaf</span>
+						<span style="font-size: .5em">the Gentle Kitsune</span>
+					</div>
+					<div class="back flex col center">
+						<span style="margin-bottom: 1rem;">A passion project in writing, character development and worldbuilding, started circa 2020 and still in development: an original character and a piece of a fictitious world.</span>
+						<span style="margin-bottom: 1rem;">Starting as just a roleplaying character with a simple premise, with his personality being developed over time, Ras Silverleaf has slowly grown into a character with a complex personality and inner struggles.</span>
+						<span style="margin-bottom: 1rem;">The worldbuilding side of this project is a medieval fantasy setting world which is being rendered into being through writing, including a hard magic system which is being developed.</span>
+						<span><a href="https://rassilverleaf.tumblr.com/" target="_blank">Website</a></span>
+						<small>* Card background art not original.</small>
+					</div>
+				</div>
+			</div>
+			<div class="grid-item card" id="titris" style="--cspan: 1; --rspan: 2">
+				<div class="card-inner">
+					<div class="front header flex col">
+						<img class="icon" src="assets/titris-icon.png" alt="Titris icon">
+						<span>Titris</span>
+						<span style="font-size: .5em">I know, very mature</span>
+					</div>
+					<div class="back flex col center">
+						<span style="margin-bottom: 14rem;">My first serious game project, Titris is a Tetris clone developed for Computer Graphics class in university.</span>
+						<span>All sounds and the music are original.</span>
+						<span><a href="https://rustygentleman.github.io/Titris-Web/" target="_blank">Play</a></span>
+						<span><a href="https://github.com/RustyGentleman/Titris" target="_blank">Repository</a></span>
+					</div>
+				</div>
+			</div>
+			<div class="grid-item card" id="innerspace" style="--cspan: 1; --rspan: 1">
+				<div class="card-inner">
+					<div class="front header flex col">
+						<span class="sym icon">⌗</span>
+						<span>Innerspace</span>
+						<span style="font-size: .5em">Emptiness</span>
+					</div>
+					<div class="back flex col center">
+						<span style="margin-bottom: 1em;">A first attempt in making a in only HTML/CSS/JS, and a first venture into consistent, randomly-generated map cells.</span>
+						<span><a href="https://rustygentleman.github.io/Innerspace/" target="_blank">Play</a></span>
+						<span><a href="https://github.com/RustyGentleman/Innerspace" target="_blank">Repository</a></span>
+					</div>
+				</div>
+			</div>
+			<div class="grid-item card" id="husk" style="--cspan: 1; --rspan: 1">
+				<div class="card-inner">
+					<div class="front header flex col">
+						<img class="icon" src="assets/husk-icon.png" alt="Husk icon">
+						<span>Husk</span>
+						<span style="font-size: .5em">No Return</span>
+					</div>
+					<div class="back flex col center">
+						<span style="margin-bottom: 1em;">Written in Discord.py, Husk is a bot with some simple, general functions, and a few specific to a now-discontinued personal project named No Return.</span>
+						<span>Husk is currently</span>
+						<span>offline and disused</span>
+					</div>
+				</div>
+			</div>
+			<div class="grid-item card" id="incantation" style="--cspan: 2; --rspan: 2">
+				<div class="card-inner">
+					<div class="front header flex col">
+						<img class="icon" src="assets/incantation-icon.png" alt="Nonagon Infinity">
+						<span>Incantation</span>
+						<span style="font-size: .5em">To banish evil</span>
+					</div>
+					<div class="back flex col center">
+						<span>A second attempt at making a game in only HTML/CSS/JS, Incantation is also my second serious game project, developed for Graph Theory class in university.</span>
+						<span style="margin-bottom: 15em;">It is a five-minute wave survival game where the Tree class of graphs is part of the core mechanic.</span>
+						<span style="margin-bottom: 1em;">All sounds and music are original, and part of the code was cannibalized and adapted from Innerspace. Enemy sprite art is credit in the repository.</span>
+						<span><a href="https://rustygentleman.github.io/Incantation/" target="_blank">Play</a></span>
+						<span><a href="https://www.youtube.com/watch?v=Ph4tfcLj4gQ" target="_blank">Theme song</a></span>
+						<span><a href="https://github.com/RustyGentleman/Incantation" target="_blank">Repository</a></span>
+					</div>
+				</div>
+			</div>
+			<div class="grid-item card" id="jamusesshon" style="--cspan: 1; --rspan: 1">
+				<div class="card-inner">
+					<div class="front header flex col">
+						<img class="icon" src="assets/jamusesshon-icon.png" alt="JS">
+						<span>Jamusesshon</span>
+					</div>
+					<div class="back flex col center">
+						<span style="margin-bottom: 1em;">A server-client system to watch YouTube videos synchronously in a group, developed for hosting Listening Parties.</span>
+						<span><a href="https://github.com/RustyGentleman/Jamusesshon" target="_blank">Repository</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

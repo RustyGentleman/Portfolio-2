@@ -1,0 +1,785 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap");
+@font-face {
+  font-family: "Segoe UI Symbol";
+  src: url(assets/seguisym.ttf);
+}
+@-webkit-keyframes oldpages-reach-bob {
+  0% {
+    background-position-y: 1rem;
+  }
+  100% {
+    background-position-y: 3rem;
+  }
+}
+@keyframes oldpages-reach-bob {
+  0% {
+    background-position-y: 1rem;
+  }
+  100% {
+    background-position-y: 3rem;
+  }
+}
+@-webkit-keyframes bob {
+  0% {
+    transform: translateY(-0.5rem);
+  }
+  50% {
+    transform: translateY(0.5rem);
+  }
+  100% {
+    transform: translateY(-0.5rem);
+  }
+}
+@keyframes bob {
+  0% {
+    transform: translateY(-0.5rem);
+  }
+  50% {
+    transform: translateY(0.5rem);
+  }
+  100% {
+    transform: translateY(-0.5rem);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes incantation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.9);
+  }
+}
+@keyframes incantation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.9);
+  }
+}
+@-webkit-keyframes oldpages {
+  0%, 40%, 70%, 100% {
+    transform: rotate(0deg);
+  }
+  50%, 60% {
+    transform: rotate(-20deg);
+  }
+}
+@keyframes oldpages {
+  0%, 40%, 70%, 100% {
+    transform: rotate(0deg);
+  }
+  50%, 60% {
+    transform: rotate(-20deg);
+  }
+}
+:root {
+  scroll-behavior: smooth;
+  background-color: #111;
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 49.1rem) {
+  :root {
+    --max-col: 2;
+  }
+}
+@media screen and (min-width: 49.1rem) {
+  :root {
+    --max-col: 3;
+  }
+}
+@media screen and (min-width: 65.1rem) {
+  :root {
+    --max-col: 4;
+  }
+}
+@media screen and (min-width: 81.1rem) {
+  :root {
+    --max-col: 5;
+  }
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  padding: 1rem;
+  font-family: "Oxanium";
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 33.1rem) {
+  body {
+    place-content: normal;
+    overflow-x: scroll;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 15rem);
+  grid-auto-flow: dense;
+  gap: 1rem;
+}
+.grid.grid-fixed {
+  grid-auto-rows: 15rem;
+}
+.grid > .grid-item {
+  min-height: 15rem;
+}
+.grid .short {
+  min-height: 0;
+  height: 3.75rem;
+}
+.grid .full-line {
+  grid-column: 1/-1;
+}
+
+@media screen and (max-width: 33.1rem) {
+  :root {
+    font-size: 3vw;
+  }
+}
+header {
+  display: grid;
+  grid-template-columns: 16rem minmax(auto, 46rem);
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 49.1rem) {
+  header {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  header #icon-wrapper {
+    grid-area: 1/1/1/3;
+    margin-left: -5rem;
+  }
+  header #info-container {
+    grid-area: 1/2/1/4;
+  }
+}
+.grid.placeholder-bg {
+  background-image: url(assets/grid-bg.png);
+  background-position: top left;
+  background-size: 16rem 16rem;
+}
+
+.sym {
+  font-family: "Segoe UI Symbol";
+}
+
+.icon {
+  font-size: 5rem;
+  font-weight: normal;
+  line-height: 1em;
+}
+
+img.icon {
+  width: 1em;
+  height: auto;
+}
+
+.flex {
+  display: flex;
+}
+.flex.flex-center {
+  place-content: center;
+  place-items: center;
+}
+.flex.row {
+  flex-direction: row !important;
+}
+.flex.col {
+  flex-direction: column !important;
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.decorated::before, .decorated::after {
+  font-family: "Segoe UI Symbol";
+  transition: translate 300ms ease, letter-spacing 300ms ease, margin 300ms ease;
+  letter-spacing: -1.6ch;
+  margin-right: 1.6ch;
+}
+.decorated::before {
+  content: "▶▶▶";
+  margin-right: 2.6ch;
+}
+.decorated::after {
+  content: "◀◀◀";
+  margin-left: 1ch;
+}
+.decorated:hover::before, .decorated:hover::after {
+  letter-spacing: 1ch;
+}
+.decorated:hover::before {
+  margin-right: 1ch;
+  margin-left: 1.6ch;
+  translate: -1em 0;
+}
+.decorated:hover::after {
+  translate: 1em 0;
+}
+
+.fa {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.center {
+  text-align: center;
+}
+
+*,
+body {
+  scrollbar-width: auto;
+  scrollbar-color: hsl(216deg, 100%, 50%) white;
+}
+*::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: rgba(0, 0, 0, 0.19);
+}
+*::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  min-height: 3rem;
+  min-width: 3rem;
+  background-color: hsl(216deg, 100%, 50%);
+  box-shadow: none;
+  border-radius: 0;
+  border: 1px solid hsl(216deg, 100%, 40%);
+}
+*::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+  background-color: hsl(216deg, 100%, 40%);
+}
+*::-webkit-scrollbar-track-piece,
+body::-webkit-scrollbar-track-piece {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.19);
+}
+
+span.center {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+span.indent {
+  margin-left: 1em;
+}
+
+a {
+  display: inline;
+  color: inherit;
+  position: relative;
+  background-image: linear-gradient(to right, white 0%, white 100%);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0% 0.15rem;
+  text-decoration: underline;
+  transition: background-size 300ms ease;
+}
+a:hover {
+  background-size: 100% 0.15rem;
+}
+a:hover::after {
+  width: 1.8ch;
+  opacity: 1;
+}
+a::after {
+  content: " #";
+  display: inline-flex;
+  place-content: center;
+  width: 0;
+  opacity: 0;
+  transition: width 300ms ease, opacity 300ms ease;
+}
+a[target=_blank]::after {
+  content: " \f08e" !important;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+a i {
+  background: none;
+}
+
+@media (hover: none) {
+  header #info-container #name::before, header #info-container #name::after {
+    opacity: 1 !important;
+  }
+  header #info-container #name::before {
+    width: 1.7ch !important;
+  }
+  header #info-container #name::after {
+    width: 5.5ch !important;
+  }
+}
+#content-wrapper {
+  max-width: min(100vw - 2rem, 79rem);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 5rem;
+  overflow-x: visible;
+}
+#content-wrapper .grid-item {
+  background-color: hsl(216deg, 100%, 50%);
+  color: white;
+  border-radius: 1rem;
+  transition: box-shadow 300ms ease;
+}
+#content-wrapper .grid.fixed {
+  grid-auto-rows: 15rem;
+}
+
+header #icon-wrapper {
+  position: relative;
+  margin-top: -11rem;
+  margin-left: -6.45;
+}
+header #icon-wrapper, header #icon-wrapper #icon {
+  width: 27.95rem;
+  height: 26rem;
+}
+header #icon-wrapper small {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  text-shadow: 0 0 0.4rem hsl(216deg, 100%, 50%), 0 0 0.4rem hsl(216deg, 100%, 50%), 0 0 0.4rem hsl(216deg, 100%, 50%);
+}
+header #info-container {
+  text-align: center;
+  text-shadow: 0 0 0.4rem hsl(216deg, 100%, 50%), 0 0 0.4rem hsl(216deg, 100%, 50%), 0 0 0.4rem hsl(216deg, 100%, 50%);
+  z-index: 1;
+}
+header #info-container #name {
+  margin: 0;
+  font-size: 2rem;
+}
+header #info-container #name::before, header #info-container #name::after {
+  display: inline-block;
+  opacity: 0;
+  width: 0;
+  color: rgb(0, 217, 255);
+  transition: width 300ms ease, opacity 300ms ease;
+  display: inline-flex;
+  place-content: center;
+}
+header #info-container #name::before {
+  content: "@";
+}
+header #info-container #name::after {
+  content: "#6418";
+}
+header #info-container #title {
+  margin-bottom: 0;
+}
+header:hover #info-container #name::before, header:hover #info-container #name::after {
+  opacity: 1;
+}
+header:hover #info-container #name::before {
+  transition-delay: 150ms;
+  width: 1.5ch;
+}
+header:hover #info-container #name::after {
+  width: 5.5ch;
+}
+header:hover #info-container #name #title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.card {
+  padding: 1rem;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  position: relative;
+}
+.card .front {
+  visibility: visible;
+  transition: opacity 300ms ease;
+}
+.card .back {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  padding: 0;
+  margin: 0;
+  transition: none;
+}
+.card.large .front {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  padding: 0;
+  margin: 0;
+  transition: none;
+}
+.card.large .back {
+  visibility: visible;
+  opacity: 1;
+  height: initial;
+  width: initial;
+  transition: opacity 300ms ease 200ms;
+}
+.card.large {
+  --cspan: 2;
+  --rspan: 1;
+  grid-column: span min(var(--max-col), var(--cspan));
+  grid-row: span var(--rspan);
+}
+.card .front {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  place-items: center;
+}
+.card .front .icon {
+  margin-bottom: 1rem;
+}
+.card .back {
+  text-shadow: 0 0 1rem black;
+}
+.card .back [class^=devicon-] {
+  font-size: 2rem;
+}
+.card .card-inner {
+  z-index: 1;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transition: opacity 300ms ease;
+  opacity: 0;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  z-index: 1;
+  background-color: black;
+}
+.card:hover::before {
+  transition: opacity 300ms ease;
+  opacity: 0.1;
+}
+.card small {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  font-style: italic;
+  font-size: 0.7em;
+}
+
+.devicon-unity-original {
+  font-size: 1.3rem !important;
+}
+.devicon-unity-original::before {
+  display: inline-block;
+  transform: translateX(-0.08rem);
+}
+
+.card#programming [class^=devicon-] {
+  font-size: 2.3rem;
+}
+
+.card#ras-silverleaf {
+  transition: background-color 300ms ease 300ms;
+}
+.card#ras-silverleaf [alt=Foxfire] {
+  width: auto;
+  height: 2em;
+  margin-top: -0.7em;
+  margin-bottom: calc(1rem - 0.1em);
+  filter: grayscale(1) brightness(0.35) invert(1) contrast(2) drop-shadow(0 0 0.3rem hsl(216deg, 100%, 50%));
+}
+.card#ras-silverleaf::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  filter: contrast(0.9) brightness(0.9);
+  background-image: url(assets/ras-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+}
+.card#ras-silverleaf.large {
+  transition: background-color 300ms ease;
+  background-color: rgb(58, 119, 62);
+}
+.card#ras-silverleaf.large::after {
+  transition: opacity 300ms ease 300ms;
+  opacity: 1;
+}
+
+.card#oldpages {
+  transition: background-color 300ms ease 300ms;
+}
+.card#oldpages .front .icon {
+  display: block;
+  -webkit-animation: oldpages 3s cubic-bezier(0.7, -1.5, 0.3, 2.5) infinite;
+          animation: oldpages 3s cubic-bezier(0.7, -1.5, 0.3, 2.5) infinite;
+  transform-origin: center;
+}
+.card#oldpages .back {
+  padding-left: 7rem;
+  text-shadow: -0.1rem -0.1rem 0.2rem magenta, 0.1rem 0.1rem 0.2rem cyan;
+}
+.card#oldpages::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  background-image: url(assets/oldpages-reach.png);
+  background-position-x: 1rem;
+  background-position-y: 1rem;
+  background-repeat: no-repeat;
+  background-size: auto 120%;
+  box-shadow: -0.2rem -0.2rem 0.5rem magenta, 0.2rem 0.2rem 0.5rem cyan;
+  -webkit-animation: oldpages-reach-bob 5s ease-in-out infinite alternate;
+          animation: oldpages-reach-bob 5s ease-in-out infinite alternate;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  opacity: 0;
+}
+.card#oldpages.large {
+  transition: background-color 300ms ease;
+  background-color: rgb(30, 30, 30);
+}
+.card#oldpages.large::after {
+  transition: opacity 300ms ease 300ms;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+  opacity: 1;
+}
+
+.card#titris {
+  transition: background-color 300ms ease 300ms;
+}
+.card#titris .icon {
+  width: 1em;
+  margin-top: -0.166em;
+  margin-bottom: -0.166em;
+  -webkit-animation: bob 6s ease-in-out infinite;
+          animation: bob 6s ease-in-out infinite;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: pixelated;
+}
+.card#titris::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  height: calc(100% - 4px);
+  width: calc(100% - 4px);
+  border-radius: calc(1rem - 4px);
+  opacity: 0;
+  background-image: url(assets/titris-img.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 170% auto;
+  box-sizing: border-box;
+  outline: solid 2px #0090ff;
+  border: solid 2px #00ff95;
+}
+.card#titris.large {
+  background-color: rgb(30, 30, 30);
+  transition: background-color 300ms ease;
+  outline: solid 2px #ff006a;
+  border: solid 2px #9000ff;
+}
+.card#titris.large::after {
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+
+.card#innerspace {
+  transition: background-color 300ms ease 300ms;
+}
+.card#innerspace::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  opacity: 0;
+  background-image: url(assets/innerspace-bg.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: calc(100% - 1rem) calc(100% - 1rem);
+  filter: brightness(0.8);
+}
+.card#innerspace.large {
+  background-color: rgb(20, 20, 20);
+  transition: background-color 300ms ease;
+  border: solid 0.2rem rgb(50, 50, 50);
+}
+.card#innerspace.large::after {
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+
+.card#husk {
+  transition: background-color 300ms ease 300ms;
+}
+.card#husk::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  opacity: 0;
+  background-image: url(assets/husk-icon.png);
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: auto 150%;
+}
+.card#husk.large {
+  background-color: rgb(40, 40, 40);
+  transition: background-color 300ms ease;
+}
+.card#husk.large::after {
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+
+.card#incantation {
+  transition: background-color 300ms ease 300ms;
+}
+.card#incantation .icon {
+  -webkit-animation: spin 20s linear infinite;
+          animation: spin 20s linear infinite;
+}
+.card#incantation::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  opacity: 0;
+  background-image: url(assets/incantation-dither.png);
+  background-repeat: repeat;
+  background-size: 64px 64px;
+  mix-blend-mode: overlay;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: pixelated;
+}
+.card#incantation.large {
+  background-color: rgb(10, 10, 10);
+  background-image: url(assets/incantation-bg-2.gif);
+  background-position: center 45%;
+  background-repeat: no-repeat;
+  background-size: auto 50;
+  transition: background-color 300ms ease;
+}
+.card#incantation.large::after {
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+.card#incantation.large::before {
+  background: none;
+  box-shadow: 0 0 2rem 0 red;
+  -webkit-animation: incantation 1s ease-in infinite alternate;
+          animation: incantation 1s ease-in infinite alternate;
+  z-index: -1;
+  opacity: 1;
+  transition-delay: 300ms;
+}
+
+.card#jamusesshon {
+  transition: background-color 300ms ease 300ms;
+}
+.card#jamusesshon::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  opacity: 0;
+}
+.card#jamusesshon.large {
+  background-color: #0864ff;
+  transition: background-color 300ms ease;
+}
+.card#jamusesshon.large::after {
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+
+.card#idk {
+  transition: background-color 300ms ease 300ms;
+}
+.card#idk::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  opacity: 0;
+  background-image: url(assets/titris-img.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 170% auto;
+}
+.card#idk.large {
+  background-color: rgb(30, 30, 30);
+  transition: background-color 300ms ease;
+}
+.card#idk.large::after {
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+/*# sourceMappingURL=app.css.map */
