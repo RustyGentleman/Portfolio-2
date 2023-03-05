@@ -3,7 +3,7 @@ const $cards = $('.card')
 const $headers = $('.grid-item.header')
 
 //# Setup
-document.querySelectorAll('.grid').forEach((grid) => animateCSSGrid.wrapGrid(grid, {duration: 300}))
+// document.querySelectorAll('.grid').forEach((grid) => animateCSSGrid.wrapGrid(grid, {duration: 300}))
 $cards.find('.back').css('display', 'none')
 $cards.on('click', function(){
 	if ($(this).hasClass('large'))
