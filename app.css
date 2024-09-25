@@ -106,6 +106,108 @@
     transform: rotate(-20deg);
   }
 }
+@-webkit-keyframes sidetoside {
+  0% {
+    transform: translateX(-4ch);
+  }
+  100% {
+    transform: translateX(4ch);
+  }
+}
+@keyframes sidetoside {
+  0% {
+    transform: translateX(-4ch);
+  }
+  100% {
+    transform: translateX(4ch);
+  }
+}
+@-webkit-keyframes search {
+  0% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(-60deg);
+  }
+}
+@keyframes search {
+  0% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(-60deg);
+  }
+}
+@-webkit-keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  67% {
+    opacity: 1;
+  }
+  67.5% {
+    opacity: 0;
+  }
+  67.9% {
+    opacity: 1;
+  }
+  68% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0;
+  }
+  96.9% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  67% {
+    opacity: 1;
+  }
+  67.5% {
+    opacity: 0;
+  }
+  67.9% {
+    opacity: 1;
+  }
+  68% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0;
+  }
+  96.9% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 :root {
   scroll-behavior: smooth;
   background-color: #111;
@@ -442,6 +544,7 @@ header:hover #info-container #name #title {
   place-content: center;
   place-items: center;
   position: relative;
+  transition: background-color 300ms ease 300ms;
 }
 .card .front {
   visibility: visible;
@@ -532,15 +635,15 @@ header:hover #info-container #name #title {
   font-size: 2.3rem;
 }
 
-.card#ras-silverleaf {
-  transition: background-color 300ms ease 300ms;
-}
 .card#ras-silverleaf [alt=Foxfire] {
   width: auto;
   height: 2em;
   margin-top: -0.7em;
   margin-bottom: calc(1rem - 0.1em);
   filter: grayscale(1) brightness(0.35) invert(1) contrast(2) drop-shadow(0 0 0.3rem hsl(216deg, 100%, 50%));
+}
+.card#ras-silverleaf .back span {
+  text-shadow: 0 0 1rem black, 0 0 1rem black, 0 0 1rem black, 0 0 1rem black;
 }
 .card#ras-silverleaf::after {
   content: "";
@@ -564,9 +667,6 @@ header:hover #info-container #name #title {
   opacity: 1;
 }
 
-.card#oldpages {
-  transition: background-color 300ms ease 300ms;
-}
 .card#oldpages .front .icon {
   display: block;
   -webkit-animation: oldpages 3s cubic-bezier(0.7, -1.5, 0.3, 2.5) infinite;
@@ -606,9 +706,6 @@ header:hover #info-container #name #title {
   opacity: 1;
 }
 
-.card#titris {
-  transition: background-color 300ms ease 300ms;
-}
 .card#titris .icon {
   width: 1em;
   margin-top: -0.166em;
@@ -647,9 +744,6 @@ header:hover #info-container #name #title {
   opacity: 1;
 }
 
-.card#innerspace {
-  transition: background-color 300ms ease 300ms;
-}
 .card#innerspace::after {
   content: "";
   position: absolute;
@@ -673,8 +767,8 @@ header:hover #info-container #name #title {
   opacity: 1;
 }
 
-.card#husk {
-  transition: background-color 300ms ease 300ms;
+.card#husk .icon {
+  filter: contrast(0) brightness(10);
 }
 .card#husk::after {
   content: "";
@@ -697,9 +791,6 @@ header:hover #info-container #name #title {
   opacity: 1;
 }
 
-.card#incantation {
-  transition: background-color 300ms ease 300ms;
-}
 .card#incantation .icon {
   -webkit-animation: spin 20s linear infinite;
           animation: spin 20s linear infinite;
@@ -740,9 +831,6 @@ header:hover #info-container #name #title {
   transition-delay: 300ms;
 }
 
-.card#jamusesshon {
-  transition: background-color 300ms ease 300ms;
-}
 .card#jamusesshon::after {
   content: "";
   position: absolute;
@@ -760,26 +848,63 @@ header:hover #info-container #name #title {
   opacity: 1;
 }
 
-.card#idk {
-  transition: background-color 300ms ease 300ms;
+.card#fathomless .icon {
+  height: 0.5ch;
+  width: 2ch;
+  margin-bottom: 1ch;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 0.1ch 0.1ch white;
 }
-.card#idk::after {
+.card#fathomless .lights-wrapper {
+  width: 1ch;
+  margin: 0 auto;
+  -webkit-animation: sidetoside 8s ease-in-out infinite alternate;
+          animation: sidetoside 8s ease-in-out infinite alternate;
+  overflow: visible;
+}
+.card#fathomless .lights {
+  --beam-width: 0ch;
+  height: 1ch;
+  width: 1ch;
+  position: relative;
+  filter: blur(3px) drop-shadow(0 0.2ch 0.3ch white) drop-shadow(0 1.3ch 1.1ch white) drop-shadow(0 1.3ch 1.1ch white);
+  transform-origin: center -3ch;
+  -webkit-animation: search 8s ease-in-out infinite alternate;
+          animation: search 8s ease-in-out infinite alternate;
+}
+.card#fathomless .lights::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(5ch + var(--beam-width));
+  transition: width 1s ease;
+  height: 5ch;
+  flex-shrink: 0;
+  margin-top: -5ch;
+  background-color: white;
+  -webkit-clip-path: polygon(50% 0, 100% 70%, 78% 90%, 50% 100%, 22% 90%, 0 70%);
+          clip-path: polygon(50% 0, 100% 70%, 78% 90%, 50% 100%, 22% 90%, 0 70%);
+  -webkit-mask-image: radial-gradient(circle at top center, white, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.1) 50%, transparent 70%);
+          mask-image: radial-gradient(circle at top center, white, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.1) 50%, transparent 70%);
+  -webkit-animation: flicker 15s ease-in-out infinite;
+          animation: flicker 15s ease-in-out infinite;
+}
+.card#fathomless::after {
   content: "";
   position: absolute;
   height: 100%;
   width: 100%;
   border-radius: 1rem;
   opacity: 0;
-  background-image: url(assets/titris-img.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 170% auto;
 }
-.card#idk.large {
-  background-color: rgb(30, 30, 30);
+.card#fathomless.large {
+  background: linear-gradient(to bottom, #2fbdff, #2fbdff, #8fdbff, #8fdbff, #ffe18f, #ff6c32 30%, #1cf7c0 30%, #2ab7cf 35%, #3c78b1, #295793);
   transition: background-color 300ms ease;
 }
-.card#idk.large::after {
+.card#fathomless.large::after {
   transition: opacity 300ms ease;
   opacity: 1;
 }

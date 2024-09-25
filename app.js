@@ -24,4 +24,11 @@ $headers.on('click', function() {
 //- Stop bubbling on card links
 $cards.find('a').on('click', (e) => e.stopPropagation())
 
-//# Functions
+//* Fathomless beam modulation
+ModulateBeam()
+function ModulateBeam() {
+	const SPAN = 5
+	const INTERVAL = 500
+	document.querySelector('#fathomless .lights').style.setProperty('--beam-width', `${Math.round(Math.random()*SPAN-SPAN/2)}ch`)
+	setTimeout(ModulateBeam, Math.random() * 500 + INTERVAL)
+}

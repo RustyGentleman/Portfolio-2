@@ -55,7 +55,39 @@ $c-secn: hsl(189deg 100% 50%)
 		transform: rotate(0deg)
 	50%, 60%
 		transform: rotate(-20deg)
-
+@keyframes sidetoside
+	0%
+		transform: translateX(-4ch)
+	100%
+		transform: translateX(4ch)
+@keyframes search
+	0%
+		transform: rotate(60deg)
+	100%
+		transform: rotate(-60deg)
+@keyframes flicker
+	0%
+		opacity: 1
+	67%
+		opacity: 1
+	67.5%
+		opacity: 0
+	67.9%
+		opacity: 1
+	68%
+		opacity: 0
+	70%
+		opacity: 1
+	95%
+		opacity: 1
+	96%
+		opacity: 0
+	96.9%
+		opacity: 1
+	97%
+		opacity: 0
+	100%
+		opacity: 1
 //# ----------
 //# Structural
 //# ----------
@@ -353,6 +385,7 @@ header
 	place-content: center
 	place-items: center
 	position: relative
+	transition: background-color 300ms ease 300ms
 
 	//- Side-switching
 	.front
@@ -440,14 +473,15 @@ header
 	font-size: 2.3rem
 
 .card#ras-silverleaf
-	transition: background-color 300ms ease 300ms
-
 	[alt='Foxfire']
 		width: auto
 		height: 2em
 		margin-top: -.7em
 		margin-bottom: calc(1rem - .1em)
 		filter: grayscale(1) brightness(0.35) invert(1) contrast(2) drop-shadow(0 0 .3rem $c-main)
+
+	.back span
+		text-shadow: 0 0 1rem black, 0 0 1rem black, 0 0 1rem black, 0 0 1rem black
 
 	&::after
 		@include pseudo-full()
@@ -466,8 +500,6 @@ header
 			opacity: 1
 
 .card#oldpages
-	transition: background-color 300ms ease 300ms
-
 	.front .icon
 		display: block
 		animation: oldpages 3s cubic-bezier(0.7, -1.5, 0.3, 2.5) infinite
@@ -498,8 +530,6 @@ header
 			opacity: 1
 
 .card#titris
-	transition: background-color 300ms ease 300ms
-
 	.icon
 		// line-height: 0.75em
 		// letter-spacing: -0.1em
@@ -535,8 +565,6 @@ header
 			opacity: 1
 
 .card#innerspace
-	transition: background-color 300ms ease 300ms
-
 	&::after
 		@include pseudo-full()
 		opacity: 0
@@ -556,8 +584,8 @@ header
 			opacity: 1
 
 .card#husk
-	transition: background-color 300ms ease 300ms
-
+	.icon
+		filter: contrast(0) brightness(10)
 	&::after
 		@include pseudo-full()
 		opacity: 0
@@ -575,8 +603,6 @@ header
 			opacity: 1
 
 .card#incantation
-	transition: background-color 300ms ease 300ms
-
 	.icon
 		animation: spin 20s linear infinite
 
@@ -611,8 +637,6 @@ header
 			transition-delay: 300ms
 
 .card#jamusesshon
-	transition: background-color 300ms ease 300ms
-
 	&::after
 		@include pseudo-full()
 		opacity: 0
@@ -625,22 +649,51 @@ header
 			transition: opacity 300ms ease
 			opacity: 1
 
-.card#idk
-	transition: background-color 300ms ease 300ms
+.card#fathomless
+	.icon
+		height: .5ch
+		width: 2ch
+		margin-bottom: 1ch
+		background: white
+		border-radius: 50%
+		box-shadow: 0 0 .1ch .1ch white
+	.lights-wrapper
+		width: 1ch
+		margin: 0 auto
+		animation: sidetoside 8s ease-in-out infinite alternate
+		overflow: visible
+	.lights
+		--beam-width: 0ch
+		height: 1ch
+		width: 1ch
+		position: relative
+		filter: blur(3px) drop-shadow(0 .2ch .3ch white) drop-shadow(0 1.3ch 1.1ch white) drop-shadow(0 1.3ch 1.1ch white)
+		transform-origin: center -3ch
+		animation: search 8s ease-in-out infinite alternate
+		&::before
+			position: absolute
+			content: ''
+			top: 0
+			left: 50%
+			transform: translateX(-50%)
+			width: calc(5ch + var(--beam-width))
+			transition: width 1s ease
+			height: 5ch
+			flex-shrink: 0
+			margin-top: -5ch
+			background-color: white
+			clip-path: polygon(50% 0, 100% 70%, 78% 90%, 50% 100%, 22% 90%, 0 70%)
+			mask-image: radial-gradient(circle at top center, white, rgb(0, 0, 0, 20%) 40%, rgb(0, 0, 0, 10%) 50%, transparent 70%)
+			animation: flicker 15s ease-in-out infinite
 
 	&::after
 		@include pseudo-full()
 		opacity: 0
-		background-image: url(assets/titris-img.png)
-		background-position: center center
-		background-repeat: no-repeat
-		background-size: 170% auto
 
 	&.large
-		background-color: rgb(30 30 30)
+		background: linear-gradient(to bottom, #2fbdff, #2fbdff, #8fdbff, #8fdbff, #ffe18f, #ff6c32 30%, #1cf7c0 30%, #2ab7cf 35%, #3c78b1, #295793)
 		transition: background-color 300ms ease
 
 		&::after
 			transition: opacity 300ms ease
 			opacity: 1
-
