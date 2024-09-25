@@ -355,15 +355,15 @@ img.icon {
   content: "◀◀◀";
   margin-left: 1ch;
 }
-.decorated:hover::before, .decorated:hover::after {
+.grid-item.short.full-line:hover .decorated::before, .grid-item.short.full-line:hover .decorated::after {
   letter-spacing: 1ch;
 }
-.decorated:hover::before {
+.grid-item.short.full-line:hover .decorated::before {
   margin-right: 1ch;
   margin-left: 1.6ch;
   translate: -1em 0;
 }
-.decorated:hover::after {
+.grid-item.short.full-line:hover .decorated::after {
   translate: 1em 0;
 }
 
@@ -374,6 +374,16 @@ img.icon {
 
 .center {
   text-align: center;
+}
+
+#socials, h2 {
+  margin-top: 1rem;
+}
+
+.media-icon, .media-icon svg {
+  display: inline-block;
+  height: 1.5rem;
+  fill: white;
 }
 
 *,
@@ -414,7 +424,7 @@ span.indent {
   margin-left: 1em;
 }
 
-a {
+.card a {
   display: inline;
   color: inherit;
   position: relative;
@@ -425,14 +435,14 @@ a {
   text-decoration: underline;
   transition: background-size 300ms ease;
 }
-a:hover {
+.card a:hover {
   background-size: 100% 0.15rem;
 }
-a:hover::after {
+.card a:hover::after {
   width: 1.8ch;
   opacity: 1;
 }
-a::after {
+.card a::after {
   content: " #";
   display: inline-flex;
   place-content: center;
@@ -440,12 +450,12 @@ a::after {
   opacity: 0;
   transition: width 300ms ease, opacity 300ms ease;
 }
-a[target=_blank]::after {
+.card a[target=_blank]::after {
   content: " \f08e" !important;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
 }
-a i {
+.card a i {
   background: none;
 }
 
@@ -480,12 +490,11 @@ a i {
 
 header #icon-wrapper {
   position: relative;
-  margin-top: -11rem;
-  margin-left: -6.45;
+  margin-top: -3.5rem;
+  margin-bottom: -2rem;
 }
 header #icon-wrapper, header #icon-wrapper #icon {
-  width: 27.95rem;
-  height: 26rem;
+  height: 20rem;
 }
 header #icon-wrapper small {
   position: absolute;

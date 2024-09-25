@@ -121,8 +121,8 @@ body
 	overflow-x: hidden
 @media screen and (max-width: $bp-2col)
 	body
-		place-content: normal 
-		overflow-x: scroll 
+		place-content: normal
+		overflow-x: scroll
 
 *
 	box-sizing: border-box
@@ -212,7 +212,7 @@ img.icon
 	&::after
 		content: '◀◀◀'
 		margin-left: 1ch
-	&:hover
+	.grid-item.short.full-line:hover &
 		&::before,
 		&::after
 			letter-spacing: 1ch
@@ -229,6 +229,15 @@ img.icon
 
 .center
 	text-align: center
+
+#socials, h2
+	margin-top: 1rem
+
+.media-icon
+	&, & svg
+		display: inline-block
+		height: 1.5rem
+		fill: white
 
 *,
 body //- Scrollbars
@@ -259,7 +268,7 @@ span
 	&.indent
 		margin-left: 1em
 
-a
+.card a
 	display: inline
 	color: inherit
 	// text-decoration: none
@@ -326,11 +335,11 @@ a
 header
 	#icon-wrapper
 		position: relative
-		margin-top: -11rem
-		margin-left: -6.45
+		margin-top: -3.5rem
+		margin-bottom: -2rem
 		&, #icon
-			width: 27.95rem
-			height: 26rem
+			// width: 27.95rem
+			height: 20rem
 		small
 			position: absolute
 			bottom: 0
