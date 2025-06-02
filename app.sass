@@ -50,6 +50,11 @@ $c-secn: hsl(189deg 100% 50%)
 		transform: scale(1)
 	to
 		transform: scale(.9)
+@keyframes incantation-flicker
+	0%
+		opacity: 1
+	100%
+		opacity: .8
 @keyframes oldpages
 	0%, 40%, 70%, 100%
 		transform: rotate(0deg)
@@ -88,6 +93,17 @@ $c-secn: hsl(189deg 100% 50%)
 		opacity: 0
 	100%
 		opacity: 1
+@keyframes keywiggle
+	$wiggle: 10deg
+	0%
+		transform: rotate($wiggle)
+	100%
+		transform: rotate(-$wiggle)
+@keyframes retroweb-bgscroll
+	0%
+		background-position: center, center 0
+	100%
+		background-position: center, center 234px
 //# ----------
 //# Structural
 //# ----------
@@ -139,7 +155,7 @@ body
 		min-height: $grid-size
 	.short
 		min-height: 0
-		height: $grid-size/4
+		height: calc($grid-size/4)
 	.full-line
 		grid-column: 1 / -1
 @media screen and (max-width: $bp-2col)
@@ -440,7 +456,6 @@ header
 			margin-bottom: 1rem
 
 	.back
-		text-shadow: 0 0 1rem black
 		[class^='devicon-']
 			font-size: 2rem
 
@@ -480,7 +495,6 @@ header
 
 .card#programming [class^='devicon-']
 	font-size: 2.3rem
-
 .card#ras-silverleaf
 	[alt='Foxfire']
 		width: auto
@@ -488,36 +502,32 @@ header
 		margin-top: -.7em
 		margin-bottom: calc(1rem - .1em)
 		filter: grayscale(1) brightness(0.35) invert(1) contrast(2) drop-shadow(0 0 .3rem $c-main)
-
 	.back span
 		text-shadow: 0 0 1rem black, 0 0 1rem black, 0 0 1rem black, 0 0 1rem black
-
 	&::after
 		@include pseudo-full()
-		filter: contrast(0.9) brightness(0.9)
+		// filter: contrast(0.9) brightness(0.9)
 		background-image: url(assets/ras-bg.png)
 		background-repeat: no-repeat
 		background-size: cover
 		background-position: center
+		border-radius: .7rem
 		opacity: 0
-
 	&.large
 		transition: background-color 300ms ease
-		background-color: rgb(58, 119, 62)
+		background-color: #5A722D
+		border: solid 5px #5A722D
 		&::after
 			transition: opacity 300ms ease 300ms
 			opacity: 1
-
 .card#oldpages
 	.front .icon
 		display: block
 		animation: oldpages 3s cubic-bezier(0.7, -1.5, 0.3, 2.5) infinite
 		transform-origin: center
-
 	.back
 		padding-left: 7rem
 		text-shadow: -.1rem -.1rem .2rem magenta, .1rem .1rem .2rem cyan
-
 	&::after
 		@include pseudo-full()
 		background-image: url(assets/oldpages-reach.png)
@@ -529,7 +539,6 @@ header
 		animation: oldpages-reach-bob 5s ease-in-out infinite alternate
 		animation-play-state: paused
 		opacity: 0
-
 	&.large
 		transition: background-color 300ms ease
 		background-color: rgb(30, 30, 30)
@@ -537,7 +546,6 @@ header
 			transition: opacity 300ms ease 300ms
 			animation-play-state: running
 			opacity: 1
-
 .card#titris
 	.icon
 		// line-height: 0.75em
@@ -548,7 +556,6 @@ header
 		margin-bottom: -.166em
 		animation: bob 6s ease-in-out infinite
 		image-rendering: pixelated
-
 	&::after
 		@include pseudo-full()
 		height: calc(100% - 4px)
@@ -562,17 +569,14 @@ header
 		box-sizing: border-box
 		outline: solid 2px #0090ff
 		border: solid 2px #00ff95
-
 	&.large
 		background-color: rgb(30, 30, 30)
 		transition: background-color 300ms ease
 		outline: solid 2px #ff006a
 		border: solid 2px #9000ff
-
 		&::after
 			transition: opacity 300ms ease
 			opacity: 1
-
 .card#innerspace
 	&::after
 		@include pseudo-full()
@@ -582,19 +586,17 @@ header
 		background-repeat: no-repeat
 		background-size: calc(100% - $grid-gap) calc(100% - $grid-gap)
 		filter: brightness(.8)
-
 	&.large
 		background-color: rgb(20, 20, 20)
 		transition: background-color 300ms ease
 		border: solid .2rem rgb(50, 50, 50)
-
 		&::after
 			transition: opacity 300ms ease
 			opacity: 1
-
 .card#husk
 	.icon
 		filter: contrast(0) brightness(10)
+		animation: spin 260s linear infinite reverse
 	&::after
 		@include pseudo-full()
 		opacity: 0
@@ -602,19 +604,15 @@ header
 		background-position: top left
 		background-repeat: no-repeat
 		background-size: auto 150%
-
 	&.large
 		background-color: rgb(40 40 40)
 		transition: background-color 300ms ease
-
 		&::after
 			transition: opacity 300ms ease
 			opacity: 1
-
 .card#incantation
 	.icon
-		animation: spin 20s linear infinite
-
+		animation: spin 20s linear infinite, incantation-flicker 64ms steps(2, end) alternate infinite
 	&::after
 		@include pseudo-full()
 		opacity: 0
@@ -623,7 +621,6 @@ header
 		background-size: 64px 64px
 		mix-blend-mode: overlay
 		image-rendering: pixelated
-
 	&.large
 		background-color: rgb(10, 10, 10)
 		background-image: url(assets/incantation-bg-2.gif)
@@ -631,11 +628,9 @@ header
 		background-repeat: no-repeat
 		background-size: auto 50
 		transition: background-color 300ms ease
-
 		&::after
 			transition: opacity 300ms ease
 			opacity: 1
-
 		&::before
 			background: none
 			box-shadow: 0 0 2rem 0 red//, inset 0 0 6px 10rem red
@@ -644,20 +639,16 @@ header
 			z-index: -1
 			opacity: 1
 			transition-delay: 300ms
-
 .card#jamusesshon
 	&::after
 		@include pseudo-full()
 		opacity: 0
-
 	&.large
 		background-color: #0864ff
 		transition: background-color 300ms ease
-
 		&::after
 			transition: opacity 300ms ease
 			opacity: 1
-
 .card#fathomless
 	.icon
 		height: .5ch
@@ -694,15 +685,38 @@ header
 			clip-path: polygon(50% 0, 100% 70%, 78% 90%, 50% 100%, 22% 90%, 0 70%)
 			mask-image: radial-gradient(circle at top center, white, rgb(0, 0, 0, 20%) 40%, rgb(0, 0, 0, 10%) 50%, transparent 70%)
 			animation: flicker 15s ease-in-out infinite
-
 	&::after
 		@include pseudo-full()
 		opacity: 0
-
 	&.large
 		background: linear-gradient(to bottom, #2fbdff, #2fbdff, #8fdbff, #8fdbff, #ffe18f, #ff6c32 30%, #1cf7c0 30%, #2ab7cf 35%, #3c78b1, #295793)
 		transition: background-color 300ms ease
-
 		&::after
 			transition: opacity 300ms ease
+			opacity: 1
+.card#retroweb
+	.icon
+		height: 1.5em
+		width: auto
+		animation: keywiggle 5s ease-in-out alternate infinite
+	.card-inner .back
+		> span
+			margin-left: 43%
+			margin-right: 2%
+	&::after
+		@include pseudo-full()
+		background-image: url(assets/retroweb-bg.png), url(assets/retroweb-stars.gif)
+		background-repeat: no-repeat, repeat
+		background-size: cover, auto
+		background-position: left bottom
+		border-radius: .7rem
+		opacity: 0
+		animation: retroweb-bgscroll 64s linear infinite
+	&.large
+		transition: background-color 300ms ease
+		background-color: black
+		border: solid 5px
+		border-color: #5B5A57// #3B3B3B #3B3B3B #5B5A57
+		&::after
+			transition: opacity 300ms ease 300ms
 			opacity: 1

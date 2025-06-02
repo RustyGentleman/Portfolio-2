@@ -4,31 +4,12 @@
   font-family: "Segoe UI Symbol";
   src: url(assets/seguisym.ttf);
 }
-@-webkit-keyframes oldpages-reach-bob {
-  0% {
-    background-position-y: 1rem;
-  }
-  100% {
-    background-position-y: 3rem;
-  }
-}
 @keyframes oldpages-reach-bob {
   0% {
     background-position-y: 1rem;
   }
   100% {
     background-position-y: 3rem;
-  }
-}
-@-webkit-keyframes bob {
-  0% {
-    transform: translateY(-0.5rem);
-  }
-  50% {
-    transform: translateY(0.5rem);
-  }
-  100% {
-    transform: translateY(-0.5rem);
   }
 }
 @keyframes bob {
@@ -42,28 +23,12 @@
     transform: translateY(-0.5rem);
   }
 }
-@-webkit-keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 @keyframes blink {
@@ -74,14 +39,6 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes incantation {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(0.9);
-  }
-}
 @keyframes incantation {
   from {
     transform: scale(1);
@@ -90,12 +47,12 @@
     transform: scale(0.9);
   }
 }
-@-webkit-keyframes oldpages {
-  0%, 40%, 70%, 100% {
-    transform: rotate(0deg);
+@keyframes incantation-flicker {
+  0% {
+    opacity: 1;
   }
-  50%, 60% {
-    transform: rotate(-20deg);
+  100% {
+    opacity: 0.8;
   }
 }
 @keyframes oldpages {
@@ -106,14 +63,6 @@
     transform: rotate(-20deg);
   }
 }
-@-webkit-keyframes sidetoside {
-  0% {
-    transform: translateX(-4ch);
-  }
-  100% {
-    transform: translateX(4ch);
-  }
-}
 @keyframes sidetoside {
   0% {
     transform: translateX(-4ch);
@@ -122,55 +71,12 @@
     transform: translateX(4ch);
   }
 }
-@-webkit-keyframes search {
-  0% {
-    transform: rotate(60deg);
-  }
-  100% {
-    transform: rotate(-60deg);
-  }
-}
 @keyframes search {
   0% {
     transform: rotate(60deg);
   }
   100% {
     transform: rotate(-60deg);
-  }
-}
-@-webkit-keyframes flicker {
-  0% {
-    opacity: 1;
-  }
-  67% {
-    opacity: 1;
-  }
-  67.5% {
-    opacity: 0;
-  }
-  67.9% {
-    opacity: 1;
-  }
-  68% {
-    opacity: 0;
-  }
-  70% {
-    opacity: 1;
-  }
-  95% {
-    opacity: 1;
-  }
-  96% {
-    opacity: 0;
-  }
-  96.9% {
-    opacity: 1;
-  }
-  97% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 @keyframes flicker {
@@ -206,6 +112,22 @@
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes keywiggle {
+  0% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+@keyframes retroweb-bgscroll {
+  0% {
+    background-position: center, center 0;
+  }
+  100% {
+    background-position: center, center 234px;
   }
 }
 :root {
@@ -389,7 +311,7 @@ img.icon {
 *,
 body {
   scrollbar-width: auto;
-  scrollbar-color: hsl(216deg, 100%, 50%) white;
+  scrollbar-color: hsl(216, 100%, 50%) white;
 }
 *::-webkit-scrollbar,
 body::-webkit-scrollbar {
@@ -401,14 +323,14 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   min-height: 3rem;
   min-width: 3rem;
-  background-color: hsl(216deg, 100%, 50%);
+  background-color: hsl(216, 100%, 50%);
   box-shadow: none;
   border-radius: 0;
-  border: 1px solid hsl(216deg, 100%, 40%);
+  border: 1px solid hsl(216, 100%, 40%);
 }
 *::-webkit-scrollbar-corner,
 body::-webkit-scrollbar-corner {
-  background-color: hsl(216deg, 100%, 40%);
+  background-color: hsl(216, 100%, 40%);
 }
 *::-webkit-scrollbar-track-piece,
 body::-webkit-scrollbar-track-piece {
@@ -472,14 +394,12 @@ span.indent {
 }
 #content-wrapper {
   max-width: min(100vw - 2rem, 79rem);
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   margin-top: 5rem;
   overflow-x: visible;
 }
 #content-wrapper .grid-item {
-  background-color: hsl(216deg, 100%, 50%);
+  background-color: hsl(216, 100%, 50%);
   color: white;
   border-radius: 1rem;
   transition: box-shadow 300ms ease;
@@ -502,11 +422,11 @@ header #icon-wrapper small {
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.7rem;
-  text-shadow: 0 0 0.4rem hsl(216deg, 100%, 50%), 0 0 0.4rem hsl(216deg, 100%, 50%), 0 0 0.4rem hsl(216deg, 100%, 50%);
+  text-shadow: 0 0 0.4rem hsl(216, 100%, 50%), 0 0 0.4rem hsl(216, 100%, 50%), 0 0 0.4rem hsl(216, 100%, 50%);
 }
 header #info-container {
   text-align: center;
-  text-shadow: 0 0 0.4rem hsl(216deg, 100%, 50%), 0 0 0.4rem hsl(216deg, 100%, 50%), 0 0 0.4rem hsl(216deg, 100%, 50%);
+  text-shadow: 0 0 0.4rem hsl(216, 100%, 50%), 0 0 0.4rem hsl(216, 100%, 50%), 0 0 0.4rem hsl(216, 100%, 50%);
   z-index: 1;
   padding-right: 1rem;
 }
@@ -599,9 +519,6 @@ header:hover #info-container #name #title {
 .card .front .icon {
   margin-bottom: 1rem;
 }
-.card .back {
-  text-shadow: 0 0 1rem black;
-}
 .card .back [class^=devicon-] {
   font-size: 2rem;
 }
@@ -649,7 +566,7 @@ header:hover #info-container #name #title {
   height: 2em;
   margin-top: -0.7em;
   margin-bottom: calc(1rem - 0.1em);
-  filter: grayscale(1) brightness(0.35) invert(1) contrast(2) drop-shadow(0 0 0.3rem hsl(216deg, 100%, 50%));
+  filter: grayscale(1) brightness(0.35) invert(1) contrast(2) drop-shadow(0 0 0.3rem hsl(216, 100%, 50%));
 }
 .card#ras-silverleaf .back span {
   text-shadow: 0 0 1rem black, 0 0 1rem black, 0 0 1rem black, 0 0 1rem black;
@@ -660,16 +577,17 @@ header:hover #info-container #name #title {
   height: 100%;
   width: 100%;
   border-radius: 1rem;
-  filter: contrast(0.9) brightness(0.9);
   background-image: url(assets/ras-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  border-radius: 0.7rem;
   opacity: 0;
 }
 .card#ras-silverleaf.large {
   transition: background-color 300ms ease;
-  background-color: rgb(58, 119, 62);
+  background-color: #5A722D;
+  border: solid 5px #5A722D;
 }
 .card#ras-silverleaf.large::after {
   transition: opacity 300ms ease 300ms;
@@ -678,8 +596,7 @@ header:hover #info-container #name #title {
 
 .card#oldpages .front .icon {
   display: block;
-  -webkit-animation: oldpages 3s cubic-bezier(0.7, -1.5, 0.3, 2.5) infinite;
-          animation: oldpages 3s cubic-bezier(0.7, -1.5, 0.3, 2.5) infinite;
+  animation: oldpages 3s cubic-bezier(0.7, -1.5, 0.3, 2.5) infinite;
   transform-origin: center;
 }
 .card#oldpages .back {
@@ -698,10 +615,8 @@ header:hover #info-container #name #title {
   background-repeat: no-repeat;
   background-size: auto 120%;
   box-shadow: -0.2rem -0.2rem 0.5rem magenta, 0.2rem 0.2rem 0.5rem cyan;
-  -webkit-animation: oldpages-reach-bob 5s ease-in-out infinite alternate;
-          animation: oldpages-reach-bob 5s ease-in-out infinite alternate;
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  animation: oldpages-reach-bob 5s ease-in-out infinite alternate;
+  animation-play-state: paused;
   opacity: 0;
 }
 .card#oldpages.large {
@@ -710,8 +625,7 @@ header:hover #info-container #name #title {
 }
 .card#oldpages.large::after {
   transition: opacity 300ms ease 300ms;
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
+  animation-play-state: running;
   opacity: 1;
 }
 
@@ -719,9 +633,7 @@ header:hover #info-container #name #title {
   width: 1em;
   margin-top: -0.166em;
   margin-bottom: -0.166em;
-  -webkit-animation: bob 6s ease-in-out infinite;
-          animation: bob 6s ease-in-out infinite;
-  image-rendering: -moz-crisp-edges;
+  animation: bob 6s ease-in-out infinite;
   image-rendering: pixelated;
 }
 .card#titris::after {
@@ -778,6 +690,7 @@ header:hover #info-container #name #title {
 
 .card#husk .icon {
   filter: contrast(0) brightness(10);
+  animation: spin 260s linear infinite reverse;
 }
 .card#husk::after {
   content: "";
@@ -801,8 +714,7 @@ header:hover #info-container #name #title {
 }
 
 .card#incantation .icon {
-  -webkit-animation: spin 20s linear infinite;
-          animation: spin 20s linear infinite;
+  animation: spin 20s linear infinite, incantation-flicker 64ms steps(2, end) alternate infinite;
 }
 .card#incantation::after {
   content: "";
@@ -815,7 +727,6 @@ header:hover #info-container #name #title {
   background-repeat: repeat;
   background-size: 64px 64px;
   mix-blend-mode: overlay;
-  image-rendering: -moz-crisp-edges;
   image-rendering: pixelated;
 }
 .card#incantation.large {
@@ -833,8 +744,7 @@ header:hover #info-container #name #title {
 .card#incantation.large::before {
   background: none;
   box-shadow: 0 0 2rem 0 red;
-  -webkit-animation: incantation 1s ease-in infinite alternate;
-          animation: incantation 1s ease-in infinite alternate;
+  animation: incantation 1s ease-in infinite alternate;
   z-index: -1;
   opacity: 1;
   transition-delay: 300ms;
@@ -868,8 +778,7 @@ header:hover #info-container #name #title {
 .card#fathomless .lights-wrapper {
   width: 1ch;
   margin: 0 auto;
-  -webkit-animation: sidetoside 8s ease-in-out infinite alternate;
-          animation: sidetoside 8s ease-in-out infinite alternate;
+  animation: sidetoside 8s ease-in-out infinite alternate;
   overflow: visible;
 }
 .card#fathomless .lights {
@@ -879,8 +788,7 @@ header:hover #info-container #name #title {
   position: relative;
   filter: blur(3px) drop-shadow(0 0.2ch 0.3ch white) drop-shadow(0 1.3ch 1.1ch white) drop-shadow(0 1.3ch 1.1ch white);
   transform-origin: center -3ch;
-  -webkit-animation: search 8s ease-in-out infinite alternate;
-          animation: search 8s ease-in-out infinite alternate;
+  animation: search 8s ease-in-out infinite alternate;
 }
 .card#fathomless .lights::before {
   position: absolute;
@@ -894,12 +802,9 @@ header:hover #info-container #name #title {
   flex-shrink: 0;
   margin-top: -5ch;
   background-color: white;
-  -webkit-clip-path: polygon(50% 0, 100% 70%, 78% 90%, 50% 100%, 22% 90%, 0 70%);
-          clip-path: polygon(50% 0, 100% 70%, 78% 90%, 50% 100%, 22% 90%, 0 70%);
-  -webkit-mask-image: radial-gradient(circle at top center, white, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.1) 50%, transparent 70%);
-          mask-image: radial-gradient(circle at top center, white, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.1) 50%, transparent 70%);
-  -webkit-animation: flicker 15s ease-in-out infinite;
-          animation: flicker 15s ease-in-out infinite;
+  clip-path: polygon(50% 0, 100% 70%, 78% 90%, 50% 100%, 22% 90%, 0 70%);
+  mask-image: radial-gradient(circle at top center, white, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.1) 50%, transparent 70%);
+  animation: flicker 15s ease-in-out infinite;
 }
 .card#fathomless::after {
   content: "";
@@ -917,4 +822,37 @@ header:hover #info-container #name #title {
   transition: opacity 300ms ease;
   opacity: 1;
 }
-/*# sourceMappingURL=app.css.map */
+
+.card#retroweb .icon {
+  height: 1.5em;
+  width: auto;
+  animation: keywiggle 5s ease-in-out alternate infinite;
+}
+.card#retroweb .card-inner .back > span {
+  margin-left: 43%;
+  margin-right: 2%;
+}
+.card#retroweb::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  background-image: url(assets/retroweb-bg.png), url(assets/retroweb-stars.gif);
+  background-repeat: no-repeat, repeat;
+  background-size: cover, auto;
+  background-position: left bottom;
+  border-radius: 0.7rem;
+  opacity: 0;
+  animation: retroweb-bgscroll 64s linear infinite;
+}
+.card#retroweb.large {
+  transition: background-color 300ms ease;
+  background-color: black;
+  border: solid 5px;
+  border-color: #5B5A57;
+}
+.card#retroweb.large::after {
+  transition: opacity 300ms ease 300ms;
+  opacity: 1;
+}/*# sourceMappingURL=app.css.map */
